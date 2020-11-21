@@ -1,8 +1,11 @@
 /**
- * Write a description of class Player here.
+ * The Player class is the subclass of the Human class.
+ * It represents each player that is to be added into the
+ * Team. The player object has a reference to the Player's 
+ * Team as well as holds the Player's name.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Salman Haidri, Yaksh J Haranwala, Hasan Zobaer Chowdhury
+ * @date   20th November 2020.
  */
 public class Player extends Human
 {
@@ -20,7 +23,6 @@ public class Player extends Human
         super(name);
         this.team = team;
     }
-
     
     /**
      * Accessor method for the Player's Team.
@@ -44,9 +46,10 @@ public class Player extends Human
      * Return the information of the Player.
      * 
      * @return the name of the player name along with jerseyNumber
-     *         by overriding the toString method.
+     *         by overriding the toString method of the Object class.
      */
     public String toString(){
         return team.getTeamName() + getName();
     }
 }
+

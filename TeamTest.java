@@ -13,6 +13,9 @@ import org.junit.Test;
  */
 public class TeamTest
 {
+    private Division division1;
+    private Team team1;
+
     /**
      * Default constructor for test class TeamTest
      */
@@ -28,6 +31,8 @@ public class TeamTest
     @Before
     public void setUp()
     {
+        division1 = new Division();
+        team1 = new Team("Raptors", division1);
     }
 
     /**
@@ -39,4 +44,12 @@ public class TeamTest
     public void tearDown()
     {
     }
+
+    @Test
+    public void testCreateTeam()
+    {
+        team1.createTeam();
+        team1.createTeam();
+    }
 }
+
