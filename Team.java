@@ -16,6 +16,8 @@ public class Team
     private Division division;
     // The number of matches that the Team has played.
     private int matchesPlayed;
+    // Points for winning the match
+    private int points;
     // The number of matches that the Team has Won.
     private int matchesWon;
     // The number of matches that the Team has Lost.
@@ -67,6 +69,24 @@ public class Team
      */
     public Division getDivision(){
         return division;
+    }
+    
+    /**
+     * Accessor method for the points gained
+     * for winning the match
+     * 
+     * @return the points of the team.
+     */
+    public int getPoints(){
+        return points;
+    }
+    
+    /**
+     * Mutator method for the points gained
+     * for winning the match
+     */
+    public void setPoints(){
+        points++;
     }
     
     /**
