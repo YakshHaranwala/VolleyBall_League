@@ -99,11 +99,12 @@ public class Match
             points = 15;
         }
         Random rand = new Random();
+        int rand1 = rand.nextInt(100);
         while(team1_score < points && team2_score < points){
-            if(rand.nextInt(100) <= 50){
+            if(rand1 <= 50){
                 team1_score++;
             }
-            else if(rand.nextInt(100) > 50){
+            else if(rand1 > 50){
                 team2_score++;
             }
         }
