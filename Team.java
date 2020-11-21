@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Random;
 /**
  * The Team class is the actual representation of each team that 
  * is going to participate in the in the Division as well as is 
@@ -24,6 +26,8 @@ public class Team
     private int pointsAgainst;   
     // Point difference PF - PA.
     private int pointsDifference;
+    //ArrayList storing the Team's players and coaches.
+    private ArrayList<Human> teamList;
 
     /**
      * Constructor for objects of class Team which
@@ -34,5 +38,151 @@ public class Team
         // initialise instance variables
         this.teamName = teamName;
         this.division = division;
+        teamList = new ArrayList<>();
     }
+    
+    /**
+     * Accessor method for the name of the Team.
+     * 
+     * @return The team name.
+     */
+    public String getTeamName(){
+        return teamName;
+    }
+    
+    /**
+     * Mutator method for the name of the Team.
+     * 
+     * @param The new name for the Team.
+     */
+    public void setTeamName(String newTeamName){
+        teamName = newTeamName;
+    }
+    
+    /**
+     * Accessor method for the Division
+     * that the Team is playing in.
+     * 
+     * @return the Division name.
+     */
+    public Division getDivision(){
+        return division;
+    }
+    
+    /**
+     * Accessor method for the points scored 
+     * by the team in the Division.
+     * 
+     * @return The points scored by the Team.
+     */
+    public int getPointsFor(){
+        return pointsFor;
+    }
+    
+    /**
+     * Mutator method for the points scored
+     * by the team in the Division.
+     * 
+     * @param Additional Points scored by the team.
+     */
+    public void setPointsFor(int addPointsFor){
+        pointsFor += addPointsFor;
+    }
+    
+    /**
+     * Accessor method for the points against
+     * the team in the Division.
+     * 
+     * @return The points scored against the Team.
+     */
+    public int getPointsAgainst(){
+        return pointsAgainst;
+    }
+    
+    /**
+     * Mutator method for the points against
+     * the team in the Division.
+     * 
+     * @param Additional points scored against the Team.
+     */
+    public void setPointsAgainst(int addPointsAgainst){
+        pointsAgainst += addPointsAgainst;
+    }
+    
+    /**
+     * The point difference for the Team's point.
+     * Subtract pointsAgainst from pointsFor in the Division.
+     * 
+     * @return The point difference for the Team.
+     */
+    public int pointDifference(){
+        int pointsDifference;
+        pointsDifference = pointsFor - pointsAgainst;
+        
+        return pointsDifference;
+    }
+    
+    /**
+     * Return whether the Team is full or not.
+     * 
+     * Check if the number of players are already 12 in 
+     * the team and if so, then return null object and indicate 
+     * that the Team is already full.
+     * Else, add the player to the team.
+     */
+    public boolean isFull(){
+        int playerCount = 0;
+        int coachCount = 0;
+        for (Human member : teamList){
+            if (member instanceof Player)  playerCount++;
+            if (member instanceof Coach)   coachCount++;
+        }
+        
+        if (playerCount < 12 && coachCount < 2) return false;
+        else                                    return true;
+    }
+    
+    /**
+     * Add player to the team.
+     * @param Player that is to be added.
+     */
+    public void addPlayer(Player player){
+        boolean fullCheck = isFull();
+        if (fullCheck)  return;
+        else            teamList.add(player);
+    }
+    
+    /**
+     * Create the team player and coach names and add it to ArrayList
+     * storing the Team List.
+     */
+    public void createTeam(){
+        int noOfPlayers = 12;  // The maximum number of players in a team.
+        int noOfCoaches = 2;  // The maximum number of coaches in a team.
+        
+        if (isFull()) return; // Check if the team is full or not.
+        
+        else{
+            // Use a for loop to create 12 players and add them to the
+            // teamList, also note that jersey numbers are generated randomly
+            // between 1 to 100 and associated to the Players.
+            for (int i = 0; i < noOfPlayers; i++){
+                Random rand = new Random();  // Create randomizer.
+                int jerseyNumber = rand.nextInt(100);  // Generate jersey number.
+            
+                String playerName = "Player number " + String.valueOf(jerseyNumber);
+                Human player = new Player(playerName, this);
+                teamList.add(player);
+            }
+        
+            // Use a for loop to create 2 coaches and add them to the 
+            // teamList.
+            for (int j = 0; j <= noOfCoaches-1; j++){
+                String coachName = "Coach number " + String.valueOf(j+1);
+            
+                Human coach = new Coach(coachName);
+                teamList.add(coach);
+            }
+        }
+   }
 }

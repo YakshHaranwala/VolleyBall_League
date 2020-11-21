@@ -6,8 +6,8 @@
  */
 public class Player extends Human
 {
-    // The Jersey Number for the Player.
-    private int jerseyNumber;
+    // The Team that the Player plays for.
+    private Team team;
 
     /**
      * Constructor for objects of class Player.
@@ -15,27 +15,38 @@ public class Player extends Human
      * The constructor for the Player class that
      * assigns name and a jerseyNumber to the player.
      */
-    public Player(String name, int jerseyNumber)
+    public Player(String name, Team team)
     {
         super(name);
-        this.jerseyNumber = jerseyNumber;
+        this.team = team;
     }
 
+    
     /**
-     * Accessor method for the Player's Jersey Number.
+     * Accessor method for the Player's Team.
      * 
-     * @return the player's jersey number.
+     * @return The team that the player plays for.
      */
-    public int getJerseyNumber(){
-        return jerseyNumber;
+    public Team getTeam(){
+        return team;
     }
     
     /**
-     * Mutator method for the Player's Jersey Number.
+     * Mutator method for the Player's Team.
      * 
-     * @param the new jersey number for the player.
+     * @param The new Team for the player.
      */
-    public void setJerseyNumber(int newJerseyNumber){
-        jerseyNumber = newJerseyNumber;
+    public void setTeam(Team newTeam){
+        team = newTeam;
+    }
+    
+    /**
+     * Return the information of the Player.
+     * 
+     * @return the name of the player name along with jerseyNumber
+     *         by overriding the toString method.
+     */
+    public String toString(){
+        return team.getTeamName() + getName();
     }
 }
