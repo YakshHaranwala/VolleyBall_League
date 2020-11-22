@@ -15,7 +15,6 @@ public class Match
     
     private Division division;
     
-
     /**
      * Constructor for objects of class Match
      */
@@ -109,7 +108,9 @@ public class Match
             }
         }
         team1.setPointsFor(team1_score);
+        team1.setPointsAgainst(team2_score);
         team2.setPointsFor(team2_score);
+        team2.setPointsAgainst(team1_score);
         return new int[] {team1_score, team2_score};
     }
 }
