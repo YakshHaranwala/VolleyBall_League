@@ -28,6 +28,7 @@ public class Team
     private int pointsDifference;
     //ArrayList storing the Team's players and coaches.
     private ArrayList<Human> teamList;
+    
 
     /**
      * Constructor for objects of class Team which
@@ -192,5 +193,15 @@ public class Team
                 teamList.add(coach);
             }
         }
+    }
+    
+    /**
+     * Return the string representation of the team.
+     */
+    public String toString(){
+        return teamName + String.valueOf(matchesPlayed) + String.valueOf(matchesWon) + String.valueOf(matchesLost) +
+               String.valueOf(matchesLost) + String.valueOf(standingPoints) + String.valueOf(pointsFor) +
+               String.valueOf(pointsAgainst) + String.valueOf(pointsDifference);
+               
     }
 }

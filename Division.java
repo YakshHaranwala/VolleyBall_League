@@ -1,9 +1,15 @@
+import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.Arrays;
 /**
- * Write a description of class Division here.
+ * The Division class represent a Division on the Volleyball League.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * The purpose of the division class is to simulate the division.
+ * The division also serves the purpose of adding a match and simulating it
+ * and then announcing the winners by calculating the standings.
+ *
+ * @author Salman Haidri, Yaksh J Haranwala, Hasan Zobaer Chowdhury
+ * @date   20th November 2020
  */
 public class Division
 {
@@ -45,10 +51,72 @@ public class Division
     }
     
     /**
-     * Take 2 teams from the same division and create a match.
+     * Take 2 teams from the same division and create a Match.
+     * Then, call the Match class's simulateMatch() method to
+     * simulate the points and the winner of the Match.
+     * 
+     * @param Team1 is the first team participating in the match.
+     * @param Team2 is the second team participating in the match.
      */
-    public void addMatch(Team team1, Team team2, int score){
-        Match matchToAdd = new Match(team1, team2, score);
+    public void addMatch(Team team1, Team team2){
+        Match matchToAdd = new Match(team1, team2);
         matchToAdd.simulateMatch();
+    }
+    
+    /**
+     * Calculate the standings of the League after the matches have taken place.
+     *
+     * The method does so by comparing the standingPoints of all the teams with 
+     * each other and swapping out the teams that are higher.
+     * Also, if 2 teams have same standingPoints, then the pointsDifference is used
+     * as a tiebreaker.
+     * The Algorithm is in-place as such it uses the teamPool ArrayList and sorts it 
+     * only according to standings.
+     */
+    public ArrayList<Team> calculateStanding(){
+        Team[] teamArray = new Team[teamPool.size()];
+        teamArray = teamPool.toArray(teamArray);
+        
+        for (int i = 0; i <= teamArray.length; i++){
+            Team currentTeam = teamArray[i];
+            for (int j = i; j <= teamArray.length; j++){
+                Team teamToCompare = teamArray[j];
+                if (currentTeam.getStandingPoints() < teamToCompare.getStandingPoints()){
+                    Team temp = currentTeam;
+                    currentTeam = teamToCompare;
+                    teamToCompare = temp;
+                }
+                else if (currentTeam.getStandingPoints() == teamToCompare.getStandingPoints()){
+                    if (currentTeam.pointDifference() < teamToCompare.pointDifference()){
+                        Team temp = currentTeam;
+                        currentTeam = teamToCompare;
+                        teamToCompare = temp;
+                    }
+                }
+                else {
+                    continue;
+                }
+            }
+        }
+        ArrayList<Team> standings = new ArrayList<>(Arrays.asList(teamArray));
+        
+        return standings;
+    }
+    
+    /**
+     * Print the teams in the Division.
+     * 
+     */
+    public void printList(){
+        ArrayList<Team> toPrint = calculateStanding();
+        System.out.println("Standing " + " Team " + " Matches Played " + " Matches Won " + " Matches Lost " +
+                           " Standing Points " +  " Points For " + " Points Against " + 
+                           " Points Difference ");
+        int i = 1;
+        for (Team team : toPrint){
+            System.out.print(i);
+            System.out.println(team);
+            i++;
+        }
     }
 }

@@ -1,28 +1,28 @@
 import java.util.Random;
 /**
- * Write a description of class Match here.
- *
+ * The Match Class is the representation of an individual Match in a Division.
+ * 
+ * The Match class takes in 2 teams and simulates the match with
+ * sets and points 
  * @author (your name)
  * @version (a version number or a date)
  */
 public class Match
 {
-    // instance variables - replace the example below with your own
+    // The Team 1 that is participating in the Match.
     private Team team1;
+    // The Team 2 that is participating in the Matc
     private Team team2;
-    
-    private int score;
-    
+    // The Division that the teams are playing in.
     private Division division;
     
     /**
      * Constructor for objects of class Match
      */
-    public Match(Team team1, Team team2, int score)
+    public Match(Team team1, Team team2)
     {
         this.team1 = team1;
         this.team2 = team2;
-        this.score = score;
     }
 
     /**
@@ -45,11 +45,6 @@ public class Match
     public Team getTeam2()
     {
         return team2;
-    }
-    
-    public int getScore()
-    {
-        return score;
     }
     
     /**
