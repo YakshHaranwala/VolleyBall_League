@@ -12,12 +12,10 @@ public class Team
 {
     // The Name of the Team
     private String teamName;
-    // The Division that the team is playing in.
-    private Division division;
     // The number of matches that the Team has played.
     private int matchesPlayed;
     // Points for winning the match
-    private int points;
+    private int standingPoints;
     // The number of matches that the Team has Won.
     private int matchesWon;
     // The number of matches that the Team has Lost.
@@ -35,12 +33,12 @@ public class Team
      * Constructor for objects of class Team which
      * assigns all the necessary attributes to it.
      */
-    public Team(String teamName, Division division)
+    public Team(String teamName)
     {
         // initialise instance variables
         this.teamName = teamName;
-        this.division = division;
         teamList = new ArrayList<>();
+        createTeam();
     }
     
     /**
@@ -60,33 +58,24 @@ public class Team
     public void setTeamName(String newTeamName){
         teamName = newTeamName;
     }
-    
-    /**
-     * Accessor method for the Division
-     * that the Team is playing in.
-     * 
-     * @return the Division name.
-     */
-    public Division getDivision(){
-        return division;
-    }
-    
+  
     /**
      * Accessor method for the points gained
      * for winning the match
      * 
      * @return the points of the team.
      */
-    public int getPoints(){
-        return points;
+    public int getStandingPoints(){
+        return standingPoints;
     }
     
     /**
      * Mutator method for the points gained
      * for winning the match
      */
-    public void setPoints(){
-        points++;
+    public void setStandingPoints(int noOfSets){
+        // System.out.println(getTeamName() + " " + String.valueOf(noOfSets)); //Uncomment for printing and checking the results!
+        standingPoints += noOfSets;
     }
     
     /**
@@ -136,7 +125,6 @@ public class Team
      * @return The point difference for the Team.
      */
     public int pointDifference(){
-        int pointsDifference;
         pointsDifference = pointsFor - pointsAgainst;
         
         return pointsDifference;
@@ -171,7 +159,7 @@ public class Team
         if (fullCheck)  return;
         else            teamList.add(player);
     }
-    
+     
     /**
      * Create the team player and coach names and add it to ArrayList
      * storing the Team List.
@@ -204,5 +192,5 @@ public class Team
                 teamList.add(coach);
             }
         }
-   }
+    }
 }

@@ -41,15 +41,5 @@ public class Player extends Human
     public void setTeam(Team newTeam){
         team = newTeam;
     }
-    
-    /**
-     * Return the information of the Player.
-     * 
-     * @return the name of the player name along with jerseyNumber
-     *         by overriding the toString method of the Object class.
-     */
-    public String toString(){
-        return team.getTeamName() + getName();
-    }
 }
 

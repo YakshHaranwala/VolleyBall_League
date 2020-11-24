@@ -56,7 +56,7 @@ public class Match
      * Create a match and update the points of 
      * the team that won the match.
      */
-    public void createMatch()
+    public void simulateMatch()
     {
         int team1_points = 0;
         int team2_points = 0;
@@ -72,12 +72,17 @@ public class Match
                 break;
             }
         }
+        
         if(team1_points > team2_points){
-            team1.setPoints();
+            team1.setStandingPoints(team1_points + 1);
+            team2.setStandingPoints(team2_points);
         }
         else{
-            team2.setPoints();
+            team2.setStandingPoints(team2_points + 1);
+            team1.setStandingPoints(team1_points);
         }
+        team1.pointDifference();
+        team2.pointDifference();
     }
     
     /**
@@ -86,7 +91,7 @@ public class Match
      * 
      * @param set_Number to check which set teams are playing
      */
-    public int[] Set(int set_Number)
+    private int[] Set(int set_Number)
     {  
         int team1_score = 0;
         int team2_score = 0;
@@ -98,8 +103,8 @@ public class Match
             points = 15;
         }
         Random rand = new Random();
-        int rand1 = rand.nextInt(100);
-        while(team1_score < points && team2_score < points){
+        while(team1_score <= points && team2_score < points){
+            int rand1 = rand.nextInt(100);
             if(rand1 <= 50){
                 team1_score++;
             }
