@@ -31,6 +31,7 @@ public class Division
         teamPool = new ArrayList<>();
         this.teamNames = teamNames;
         addTeams();
+        addMatch(teamPool.get(1), teamPool.get(2));
     }
     
     /**
@@ -61,6 +62,8 @@ public class Division
     public void addMatch(Team team1, Team team2){
         Match matchToAdd = new Match(team1, team2);
         matchToAdd.simulateMatch();
+        ArrayList<Team> x = calculateStanding();
+        System.out.println(x);
     }
     
     /**
@@ -71,15 +74,15 @@ public class Division
      * Also, if 2 teams have same standingPoints, then the pointsDifference is used
      * as a tiebreaker.
      * The Algorithm is in-place as such it uses the teamPool ArrayList and sorts it 
-     * only according to standings.
+     * only according to standings..
      */
     public ArrayList<Team> calculateStanding(){
         Team[] teamArray = new Team[teamPool.size()];
         teamArray = teamPool.toArray(teamArray);
         
-        for (int i = 0; i <= teamArray.length; i++){
+        for (int i = 0; i < teamArray.length; i++){
             Team currentTeam = teamArray[i];
-            for (int j = i; j <= teamArray.length; j++){
+            for (int j = i; j < teamArray.length; j++){
                 Team teamToCompare = teamArray[j];
                 if (currentTeam.getStandingPoints() < teamToCompare.getStandingPoints()){
                     Team temp = currentTeam;
