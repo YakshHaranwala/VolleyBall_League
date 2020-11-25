@@ -1,7 +1,13 @@
 ------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all he/she needs to know. The comments should usually include at least:
+This is the Volleyball League project which simulates the Volleyball 
+League. It has 3 divisions with 5 teams each. Each team plays 2 matches 
+against the other teams in the same league. On winning a match a team 
+gets points according to the number of sets they won plus 1 point for 
+winning the match. The losing team gets points by the number of sets they
+have won.
+
+To start a project create an instance of the League class and call the 
+simulateLeague() method.
 ------------------------------------------------------------------------
 
 PROJECT TITLE: VolleyBall League
