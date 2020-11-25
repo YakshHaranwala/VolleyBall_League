@@ -81,19 +81,19 @@ public class Division
         teamArray = teamPool.toArray(teamArray);
         
         for (int i = 0; i < teamArray.length; i++){
-            Team currentTeam = teamArray[i];
-            for (int j = i; j < teamArray.length; j++){
-                Team teamToCompare = teamArray[j];
-                if (currentTeam.getStandingPoints() < teamToCompare.getStandingPoints()){
-                    Team temp = currentTeam;
-                    currentTeam = teamToCompare;
-                    teamToCompare = temp;
+            //Team teamArray[i] = teamArray[i];
+            for (int j = i+1; j < teamArray.length; j++){
+                //Team teamArray[j] = teamArray[j];
+                if (teamArray[i].getStandingPoints() < teamArray[j].getStandingPoints()){
+                    Team temp = teamArray[i];
+                    teamArray[i] = teamArray[j];
+                    teamArray[j] = temp;
                 }
-                else if (currentTeam.getStandingPoints() == teamToCompare.getStandingPoints()){
-                    if (currentTeam.pointDifference() < teamToCompare.pointDifference()){
-                        Team temp = currentTeam;
-                        currentTeam = teamToCompare;
-                        teamToCompare = temp;
+                else if (teamArray[i].getStandingPoints() == teamArray[j].getStandingPoints()){
+                    if (teamArray[i].pointDifference() < teamArray[j].pointDifference()){
+                        Team temp = teamArray[i];
+                        teamArray[i] = teamArray[j];
+                        teamArray[j] = temp;
                     }
                 }
                 else {

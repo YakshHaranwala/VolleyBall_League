@@ -52,6 +52,57 @@ public class Team
     }
     
     /**
+     * Accessor method for the number of matches played by the Team
+     * 
+     * @return The number of matches played by the Team.
+     */
+    public int getMatchesPlayed(){
+        return matchesPlayed;
+    }
+    
+    /**
+     * Accessor method for the number of matches Lost by the Team.
+     * 
+     * @return The Number of matches that the team lost.
+     */
+    public int getMatchesLost(){
+        return matchesLost;
+    }
+    
+    /**
+     * Accessor method for the number of matches Won by the Team
+     * 
+     * @return The number of matches that the team won.
+     */
+    public int getMatchesWon(){
+        return matchesWon;
+    }
+    
+    /**
+     * Mutator method for the number of matches played by the Team.
+     * 
+     */
+    public void setMatchesPlayed(){
+        matchesPlayed++;
+    }
+    
+    /**
+     * Mutator method for the number of matches Lost by the Team.
+     * 
+     */
+    public void setMatchesLost(){
+        matchesLost++;
+    }
+    
+    /**
+     * Mutator method for the number of matches Won by the Team.
+     * 
+     */
+    public void setMatchesWon(){
+        matchesWon++;
+    }
+    
+    /**
      * Mutator method for the name of the Team.
      * 
      * @param The new name for the Team.
