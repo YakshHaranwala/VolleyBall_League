@@ -61,9 +61,6 @@ public class Division
     protected void createMatch(Team team1, Team team2){
         Match matchToAdd = new Match(team1, team2);
         int[] score = matchToAdd.simulateMatch();
-        
-        
-        
         addMatch(team1, team2, score);
     }
     
@@ -74,6 +71,14 @@ public class Division
      * 
      */
     public void addMatch(Team team1, Team team2, int[] score){
+        if(score[0] > score[1]){
+            team1.setMatchesWon();
+            team2.setMatchesLost();
+        }
+        else{
+            team2.setMatchesWon();
+            team1.setMatchesLost();
+        }
         calculateStanding();
     }
     
@@ -124,7 +129,7 @@ public class Division
     public void printList(){
         ArrayList<Team> toPrint = calculateStanding();
         System.out.println("Standing " + "     Team     " + "           Matches Played " + " Matches Won " + " Matches Lost " +
-                           " Standing Points " +  " Points For " + " Points Against " + 
+                           " League Points " +  " Points For " + " Points Against " + 
                            " Points Difference ");
         int i = 1;
         for (Team team : toPrint){

@@ -73,14 +73,10 @@ public class Match
         if(team1_points > team2_points){
             team1.setStandingPoints(team1_points + 1);
             team2.setStandingPoints(team2_points);
-            team1.setMatchesWon();
-            team2.setMatchesLost();
         }
         else{
             team2.setStandingPoints(team2_points + 1);
             team1.setStandingPoints(team1_points);
-            team2.setMatchesWon();
-            team1.setMatchesLost();
         }
         team1.pointDifference();
         team2.pointDifference();
