@@ -47,15 +47,20 @@ public class Match
     }
     
     /**
-     * Create a match and update the points of 
-     * the team that won the match.
+     * Creates a match and updates the points of the team that won the match(no. of sets won + 1)
+     * and also the team that lost the match(no. of sets won).
+     * This method also updates the number of matches won and matches lost and also updates the points difference.
+     * 
+     * @return An array of standing points of team1 and team2 in that order.
      */
     public int[] simulateMatch()
     {
         int team1_points = 0;
         int team2_points = 0;
+        
         team1.setMatchesPlayed();
         team2.setMatchesPlayed();
+        
         for(int i = 1; i <= 5; i++){
             int result[] = Set(i);            
             if(result[0] > result[1]){
@@ -64,6 +69,7 @@ public class Match
             else{
                 team2_points++;
             }
+            
             if(team1_points > 2 || team2_points > 2){
                 break;
             }
@@ -83,6 +89,7 @@ public class Match
             team2.setMatchesWon();
             team1.setMatchesLost();
         }
+        
         team1.pointDifference();
         team2.pointDifference();
         
@@ -90,10 +97,13 @@ public class Match
     }
     
     /**
-     * Randomly scores the set and return the 
-     * points scored by each team on that set.
+     * Randomly scores the set and returns the points scored by each team on that set.
+     * It randomly choses a number between 0 and 99 and if the number is less than or equal to 50
+     * team1 gets the points else team2 gets the points.
+     * This set also sets points for and points against of each team after every set.
      * 
      * @param set_Number to check which set teams are playing
+     * @return An array containing scores of team1 and team2 in that order.
      */
     private int[] Set(int set_Number)
     {  
