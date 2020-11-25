@@ -35,7 +35,7 @@ public abstract class Human
      * 
      * @param name is the name that we want to set for the Human.
      */
-    public void getName(String newName){
+    public void setName(String newName){
         name = newName;
     }
 }

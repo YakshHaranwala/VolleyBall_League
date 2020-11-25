@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 /**
- *
+ * The League class simulates the actual working of a League with divisions.
+ * 
+ * The League class contains methods for setting up the league as well as 
+ * simulating matches with random results.
+ * 
  * @author Salman Haidri, Yaksh J Haranwala, Hasan Zobaer Chowdhury
  * @date   23rd November 2020
  */
@@ -25,7 +29,7 @@ public class League
      * divisions with different team names.
      * 
      */
-    public void leagueSetup()
+    private void leagueSetup()
     {
         String[] division_1_teams = {"Division 1 Team 1", "Division 1 Team 2", 
                                      "Division 1 Team 3", "Division 1 Team 4", 
@@ -49,15 +53,6 @@ public class League
         divisionList.add(divisionOne);
         divisionList.add(divisionTwo);
         divisionList.add(divisionThree);
-        
-        //divisionOne.printList();
-        //System.out.println();
-        
-        //divisionTwo.printList();
-        //System.out.println();
-        
-        //divisionThree.printList();
-        //System.out.println();
     }
     
     /**
@@ -65,17 +60,34 @@ public class League
      * 
      * This method will create 3 divisions and then make 5 teams play matches
      * against each other.
-     * Each team will play 1 match against remaining 4 teams.
+     * Each team will play 2 matches against remaining 4 teams.
      * Then, the standings will be calculated accordingly and printed out at the last.
      */
     public void simulateLeague(){
-        leagueSetup();
-        divisionList.get(0).createMatchups();
-        divisionList.get(1).createMatchups();
-        divisionList.get(2).createMatchups();
+        leagueSetup(); // Set the league up.
         
-        divisionList.get(0).printList();
-        divisionList.get(1).printList();
-        divisionList.get(2).printList();
+        //Print the results and standings of Division 1.
+        System.out.println("Division 1 Results: ");
+        divisionList.get(0).createMatchups();
+        System.out.println();
+        System.out.println("Division 1 Standings: ");        
+        divisionList.get(0).printStandings();
+        System.out.println();
+        
+        // Print the results and standings of Division 2.
+        System.out.println("Division 2 Results: ");
+        divisionList.get(1).createMatchups();
+        System.out.println();
+        System.out.println("Division 2 Standings: ");
+        divisionList.get(1).printStandings();
+        System.out.println();
+        
+        // Print the results and standings of Division 3.
+        System.out.println("Division 3 Results:");
+        divisionList.get(2).createMatchups();
+        System.out.println();
+        System.out.println("Division 3 Standings: ");
+        divisionList.get(2).printStandings();
+        System.out.println();
     }
 }

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 /**
  * The Team class is the actual representation of each team that 
- * is going to participate in the in the Division as well as is 
+ * is going to participate in the Division as well as it is 
  * going to play matches.
  *
  * @author Salman Haidri, Yaksh J Haranwala, Hassan Zobaer Chowdhury.
@@ -28,11 +28,13 @@ public class Team
     private int pointsDifference;
     //ArrayList storing the Team's players and coaches.
     private ArrayList<Human> teamList;
-    
-
+   
     /**
      * Constructor for objects of class Team which
      * assigns all the necessary attributes to it.
+     * 
+     * It also calls the createTeam() method to add
+     * players and coaches to the team.
      */
     public Team(String teamName)
     {
@@ -101,15 +103,6 @@ public class Team
     public void setMatchesWon(){
         matchesWon++;
     }
-    
-    /**
-     * Mutator method for the name of the Team.
-     * 
-     * @param The new name for the Team.
-     */
-    public void setTeamName(String newTeamName){
-        teamName = newTeamName;
-    }
   
     /**
      * Accessor method for the points gained
@@ -124,6 +117,15 @@ public class Team
     /**
      * Mutator method for the points gained
      * for winning the match
+     * 
+     * The way that the standingPoints is calculated is as follows:
+     * 1) A team gets 1 standing point for winning a set.
+     * 2) A team gets additional 1 point for winning a match.
+     * 3) Ex: Let's say a team won a game by the margin of 3-2, then the
+     *        winning team gets 4 standing points and the losing team gets
+     *        2 standing points as well.
+     * 
+     * @param the number of sets won by the team.
      */
     public void setStandingPoints(int noOfSets){
         // System.out.println(getTeamName() + " " + String.valueOf(noOfSets)); //Uncomment for printing and checking the results!
@@ -141,8 +143,7 @@ public class Team
     }
     
     /**
-     * Mutator method for the points scored
-     * by the team in the Division.
+     * Mutator method for the points scored by the team in a set of a match.
      * 
      * @param Additional Points scored by the team.
      */
@@ -151,8 +152,7 @@ public class Team
     }
     
     /**
-     * Accessor method for the points against
-     * the team in the Division.
+     * Accessor method for the points against the team in set of a Match.
      * 
      * @return The points scored against the Team.
      */
@@ -161,8 +161,7 @@ public class Team
     }
     
     /**
-     * Mutator method for the points against
-     * the team in the Division.
+     * Mutator method for the points against the team in the Division.
      * 
      * @param Additional points scored against the Team.
      */
@@ -186,9 +185,8 @@ public class Team
      * Return whether the Team is full or not.
      * 
      * Check if the number of players are already 12 in 
-     * the team and if so, then return null object and indicate 
-     * that the Team is already full.
-     * Else, add the player to the team.
+     * the team and if so, then return true and indicate 
+     * that the Team is already full and return false otherwise.
      */
     private boolean isFull(){
         int playerCount = 0;
@@ -201,20 +199,11 @@ public class Team
         if (playerCount < 12 && coachCount < 2) return false;
         else                                    return true;
     }
-    
-    /**
-     * Add player to the team.
-     * @param Player that is to be added.
-     */
-    public void addPlayer(Player player){
-        boolean fullCheck = isFull();
-        if (fullCheck)  return;
-        else            teamList.add(player);
-    }
      
     /**
      * Create the team player and coach names and add it to ArrayList
      * storing the Team List.
+     * 
      */
     private void createTeam(){
         int noOfPlayers = 12;  // The maximum number of players in a team.
@@ -246,13 +235,13 @@ public class Team
         }
     }
     
-    /**
+   /**
      * Return the string representation of the team.
      */
     public String toString(){
         return teamName + "             " + String.valueOf(matchesPlayed) + "           " + String.valueOf(matchesWon) + "              " + 
-               String.valueOf(matchesLost) + "              " + String.valueOf(standingPoints) + "              " + String.valueOf(pointsFor) +
-               "           " + String.valueOf(pointsAgainst) +"             " +  String.valueOf(pointsDifference);
+               String.valueOf(matchesLost) + "              " + String.valueOf(standingPoints) + "           " + String.valueOf(pointsFor) +
+               "           " + String.valueOf(pointsAgainst) +"              " +  String.valueOf(pointsDifference);
                
     }
 }

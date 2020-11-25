@@ -9,9 +9,7 @@
  */
 public class Coach extends Human
 {
-    // There are no instance variables as of yet in the Coach class.
-    // Add it when it is deemed necessary.
-
+    // There are no instance variables in the Coach class.
     /**
      * Constructor for objects of class Coach.
      * The only purpose is to give the Coach a name

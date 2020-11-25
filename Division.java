@@ -31,7 +31,6 @@ public class Division
         teamPool = new ArrayList<>();
         this.teamNames = teamNames;
         addTeams();
-        // createMatch(teamPool.get(1), teamPool.get(2));
     }
     
     /**
@@ -55,30 +54,34 @@ public class Division
     /**
      * Create a Volleyball Match between 2 teams.
      * 
+     * The purpose of the function is to create a match instance by giving 2 teams,
+     * then simulating the match by calling the simulateMatch() function and then
+     * pass in the score returned by the simulateMatch() function to addMatch()
+     * function.
+     * 
      * @param Team1 is the first team participating in the match.
      * @param Team2 is the second team participating in the match.
      */
-    protected void createMatch(Team team1, Team team2){
+    private void createMatch(Team team1, Team team2){
         Match matchToAdd = new Match(team1, team2);
         int[] score = matchToAdd.simulateMatch();
         addMatch(team1, team2, score);
     }
     
     /**
-     * Take 2 teams from the same division and create a Match.
-     * Then, call the Match class's simulateMatch() method to
-     * simulate the points and the winner of the Match.
+     * Add a match to the division after it has been played and then calculate standing after printing the results.
      * 
+     * The calculation of standings is done in a separate function in the class.
+     * 
+     * @param team1 is the Team 1 participating in the Match.
+     * @param team2 is the Team 2 participating in the Match.
+     * @param score is the results of the match.
      */
     public void addMatch(Team team1, Team team2, int[] score){
-        if(score[0] > score[1]){
-            team1.setMatchesWon();
-            team2.setMatchesLost();
-        }
-        else{
-            team2.setMatchesWon();
-            team1.setMatchesLost();
-        }
+        if (score[0] > score[1]) score[0]--;
+        else                     score[1]--;
+        System.out.println(team1.getTeamName() + ": " + String.valueOf(score[0]) + "  " +
+                           team2.getTeamName() + ": " + String.valueOf(score[1]));
         calculateStanding();
     }
     
@@ -89,8 +92,6 @@ public class Division
      * each other and swapping out the teams that are higher.
      * Also, if 2 teams have same standingPoints, then the pointsDifference is used
      * as a tiebreaker.
-     * The Algorithm is in-place as such it uses the teamPool ArrayList and sorts it 
-     * only according to standings..
      */
     public ArrayList<Team> calculateStanding(){
         Team[] teamArray = new Team[teamPool.size()];
@@ -123,10 +124,13 @@ public class Division
     }
     
     /**
-     * Print the teams in the Division.
+     * Print the standings of the teams in the League.
      * 
+     * The function serves it purpose by calling the helper calculateStandings()
+     * function and fetching an array that is according to the standings of the teams 
+     * after the matches have been played. Then, the function prints all the teams.
      */
-    public void printList(){
+    public void printStandings(){
         ArrayList<Team> toPrint = calculateStanding();
         System.out.println("Standing " + "     Team     " + "           Matches Played " + " Matches Won " + " Matches Lost " +
                            " League Points " +  " Points For " + " Points Against " + 
@@ -142,7 +146,8 @@ public class Division
     /**
      * Create matchups between all the teams.
      * 
-     * @return The ArrayList containing all the matchups between teams.
+     * Each team will play 1 game at home and 1 game away against the same opponent.
+     * As a result, each time will play 8 games in total. 
      */
     public void createMatchups(){
         Team[] teams = new Team[teamPool.size()];
@@ -151,6 +156,7 @@ public class Division
         for (int i = 0; i < teams.length; i++){
             for (int j = i+1; j < teams.length; j++){
                 createMatch(teams[i], teams[j]);
+                createMatch(teams[j], teams[i]);
             }
         }
     }

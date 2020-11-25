@@ -2,10 +2,11 @@ import java.util.Random;
 /**
  * The Match Class is the representation of an individual Match in a Division.
  * 
- * The Match class takes in 2 teams and simulates the match with
- * sets and points 
- * @author (your name)
- * @version (a version number or a date)
+ * The purpose of the Match class is to simulate matches between 2 teams as well
+ * as play sets between 2 teams and generate results of sets randomly.
+ *  
+ * @author Salman Haidri, Yaksh J Haranwala, Hasan Zobaer Chowdhury
+ * @date   20th November 2020
  */
 public class Match
 {
@@ -26,23 +27,21 @@ public class Match
     }
 
     /**
-     * Accessor method for the first team
-     * that is playing
+     * Accessor method for the first team that is playing in the Match.
      * 
      * @return team1 the first team
      */
-    public Team getTeam1()
+    public Team getTeamOne()
     {
         return team1;
     }
     
     /**
-     * Accessor method for the second team
-     * that is playing
+     * Accessor method for the second team that is playing in the Match.
      * 
      * @return team2 the second team
      */
-    public Team getTeam2()
+    public Team getTeamTwo()
     {
         return team2;
     }
@@ -69,19 +68,25 @@ public class Match
                 break;
             }
         }
-        
+     
         if(team1_points > team2_points){
-            team1.setStandingPoints(team1_points + 1);
+            team1_points++;
+            team1.setStandingPoints(team1_points);
             team2.setStandingPoints(team2_points);
+            team1.setMatchesWon();
+            team2.setMatchesLost();
         }
         else{
-            team2.setStandingPoints(team2_points + 1);
+            team2_points++;
+            team2.setStandingPoints(team2_points);
             team1.setStandingPoints(team1_points);
+            team2.setMatchesWon();
+            team1.setMatchesLost();
         }
         team1.pointDifference();
         team2.pointDifference();
         
-        return new int[] {team1.getStandingPoints(), team2.getStandingPoints()};
+        return new int[] {team1_points, team2_points};
     }
     
     /**
@@ -102,7 +107,7 @@ public class Match
             points = 15;
         }
         Random rand = new Random();
-        while(team1_score <= points && team2_score < points){
+        while(team1_score < points && team2_score < points){
             int rand1 = rand.nextInt(100);
             if(rand1 <= 50){
                 team1_score++;
