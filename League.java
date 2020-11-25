@@ -27,15 +27,19 @@ public class League
      */
     public void leagueSetup()
     {
-        String[] division_1_teams = {"LA Lakers", "Toronto Raptors", 
-                                     "Boston Celtics", "Chicago Bulls", 
-                                     "Pheonix Suns"};
-        String[] division_2_teams = {"Real Madrid VC", "VC Barcelona",  
-                                     "Bayern Munich VC", "Manchester City",
-                                     "Liverpool VC"};
-        String[] division_3_teams = {"Chennai Super Kings", "Mumbai Indians",
-                                     "RCB", "Sunrisers Hyderabad",
-                                     "Kings XI Punjab"};
+        //String[] division_1_teams = {"LA Lakers", "Toronto Raptors", 
+                                     //"Boston Celtics", "Chicago Bulls", 
+                                     ///"Pheonix Suns"};
+        //String[] division_2_teams = {"Real Madrid VC", "VC Barcelona",  
+                                     //"Bayern Munich VC", "Manchester City",
+                                    // "Liverpool VC"};
+        //String[] division_3_teams = {"Chennai Super Kings", "Mumbai Indians",
+                                    // "RCB", "Sunrisers Hyderabad",
+                                    // "Kings XI Punjab"};
+                                    
+        for(int i = 0; i <= 2; i++){
+            String[] arr = new String[5];
+        }
         
         // Create 3 division.                             
         Division division_1 = new Division(division_1_teams);

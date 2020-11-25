@@ -55,6 +55,8 @@ public class Match
     {
         int team1_points = 0;
         int team2_points = 0;
+        team1.setMatchesPlayed();
+        team2.setMatchesPlayed();
         for(int i = 1; i <= 5; i++){
             int result[] = Set(i);            
             if(result[0] > result[1]){
@@ -71,10 +73,14 @@ public class Match
         if(team1_points > team2_points){
             team1.setStandingPoints(team1_points + 1);
             team2.setStandingPoints(team2_points);
+            team1.setMatchesWon();
+            team2.setMatchesLost();
         }
         else{
             team2.setStandingPoints(team2_points + 1);
             team1.setStandingPoints(team1_points);
+            team2.setMatchesWon();
+            team1.setMatchesLost();
         }
         team1.pointDifference();
         team2.pointDifference();

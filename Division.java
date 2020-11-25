@@ -62,8 +62,7 @@ public class Division
     public void addMatch(Team team1, Team team2){
         Match matchToAdd = new Match(team1, team2);
         matchToAdd.simulateMatch();
-        ArrayList<Team> x = calculateStanding();
-        System.out.println(x);
+        printList();
     }
     
     /**
