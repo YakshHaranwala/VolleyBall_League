@@ -31,7 +31,7 @@ public class Division
         teamPool = new ArrayList<>();
         this.teamNames = teamNames;
         addTeams();
-        addMatch(teamPool.get(1), teamPool.get(2));
+        // createMatch(teamPool.get(1), teamPool.get(2));
     }
     
     /**
@@ -47,8 +47,24 @@ public class Division
     private void addTeams(){
         for (int i = 0; i <= 4; i++){
             Team teamToAdd = new Team(teamNames[i]);
+            //teamToAdd.createTeam();
             teamPool.add(teamToAdd);
         }
+    }
+    
+    /**
+     * Create a Volleyball Match between 2 teams.
+     * 
+     * @param Team1 is the first team participating in the match.
+     * @param Team2 is the second team participating in the match.
+     */
+    protected void createMatch(Team team1, Team team2){
+        Match matchToAdd = new Match(team1, team2);
+        int[] score = matchToAdd.simulateMatch();
+        
+        
+        
+        addMatch(team1, team2, score);
     }
     
     /**
@@ -56,13 +72,9 @@ public class Division
      * Then, call the Match class's simulateMatch() method to
      * simulate the points and the winner of the Match.
      * 
-     * @param Team1 is the first team participating in the match.
-     * @param Team2 is the second team participating in the match.
      */
-    public void addMatch(Team team1, Team team2){
-        Match matchToAdd = new Match(team1, team2);
-        matchToAdd.simulateMatch();
-        printList();
+    public void addMatch(Team team1, Team team2, int[] score){
+        calculateStanding();
     }
     
     /**
@@ -119,6 +131,22 @@ public class Division
             System.out.print(i + "          ");
             System.out.println(team);
             i++;
+        }
+    }
+    
+    /**
+     * Create matchups between all the teams.
+     * 
+     * @return The ArrayList containing all the matchups between teams.
+     */
+    public void createMatchups(){
+        Team[] teams = new Team[teamPool.size()];
+        teams = teamPool.toArray(teams);
+        
+        for (int i = 0; i < teams.length; i++){
+            for (int j = i+1; j < teams.length; j++){
+                createMatch(teams[i], teams[j]);
+            }
         }
     }
 }

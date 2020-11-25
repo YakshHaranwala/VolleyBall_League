@@ -41,13 +41,41 @@ public class League
                                 
         
         // Create 3 division.                             
-        Division division_1 = new Division(division_1_teams);
-        Division division_2 = new Division(division_2_teams);
-        Division division_3 = new Division(division_3_teams);
+        Division divisionOne = new Division(division_1_teams);
+        Division divisionTwo = new Division(division_2_teams);
+        Division divisionThree = new Division(division_3_teams);
         
         // Add the divisions to the divisionList
-        divisionList.add(division_1);
-        divisionList.add(division_2);
-        divisionList.add(division_3);
+        divisionList.add(divisionOne);
+        divisionList.add(divisionTwo);
+        divisionList.add(divisionThree);
+        
+        //divisionOne.printList();
+        //System.out.println();
+        
+        //divisionTwo.printList();
+        //System.out.println();
+        
+        //divisionThree.printList();
+        //System.out.println();
+    }
+    
+    /**
+     * Show the simulation of a League.
+     * 
+     * This method will create 3 divisions and then make 5 teams play matches
+     * against each other.
+     * Each team will play 1 match against remaining 4 teams.
+     * Then, the standings will be calculated accordingly and printed out at the last.
+     */
+    public void simulateLeague(){
+        leagueSetup();
+        divisionList.get(0).createMatchups();
+        divisionList.get(1).createMatchups();
+        divisionList.get(2).createMatchups();
+        
+        divisionList.get(0).printList();
+        divisionList.get(1).printList();
+        divisionList.get(2).printList();
     }
 }

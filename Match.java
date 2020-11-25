@@ -51,7 +51,7 @@ public class Match
      * Create a match and update the points of 
      * the team that won the match.
      */
-    public void simulateMatch()
+    public int[] simulateMatch()
     {
         int team1_points = 0;
         int team2_points = 0;
@@ -84,6 +84,8 @@ public class Match
         }
         team1.pointDifference();
         team2.pointDifference();
+        
+        return new int[] {team1.getStandingPoints(), team2.getStandingPoints()};
     }
     
     /**

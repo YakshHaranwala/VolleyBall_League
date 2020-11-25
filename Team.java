@@ -190,7 +190,7 @@ public class Team
      * that the Team is already full.
      * Else, add the player to the team.
      */
-    public boolean isFull(){
+    private boolean isFull(){
         int playerCount = 0;
         int coachCount = 0;
         for (Human member : teamList){
@@ -216,7 +216,7 @@ public class Team
      * Create the team player and coach names and add it to ArrayList
      * storing the Team List.
      */
-    public void createTeam(){
+    private void createTeam(){
         int noOfPlayers = 12;  // The maximum number of players in a team.
         int noOfCoaches = 2;  // The maximum number of coaches in a team.
         
