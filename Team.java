@@ -250,9 +250,9 @@ public class Team
      * Return the string representation of the team.
      */
     public String toString(){
-        return teamName + "             " + String.valueOf(matchesPlayed) + "           " + String.valueOf(matchesWon) + "          " + String.valueOf(matchesLost) +
-               "            " + String.valueOf(matchesLost) + "          " + String.valueOf(standingPoints) + "          " + String.valueOf(pointsFor) +
-              "           " + String.valueOf(pointsAgainst) +"          " +  String.valueOf(pointsDifference);
+        return teamName + "             " + String.valueOf(matchesPlayed) + "           " + String.valueOf(matchesWon) + "              " + 
+               String.valueOf(matchesLost) + "              " + String.valueOf(standingPoints) + "              " + String.valueOf(pointsFor) +
+               "           " + String.valueOf(pointsAgainst) +"             " +  String.valueOf(pointsDifference);
                
     }
 }

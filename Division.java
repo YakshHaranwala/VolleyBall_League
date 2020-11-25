@@ -111,12 +111,12 @@ public class Division
      */
     public void printList(){
         ArrayList<Team> toPrint = calculateStanding();
-        System.out.println("Standing " + " Team " + " Matches Played " + " Matches Won " + " Matches Lost " +
+        System.out.println("Standing " + "     Team     " + "           Matches Played " + " Matches Won " + " Matches Lost " +
                            " Standing Points " +  " Points For " + " Points Against " + 
                            " Points Difference ");
         int i = 1;
         for (Team team : toPrint){
-            System.out.print(i);
+            System.out.print(i + "          ");
             System.out.println(team);
             i++;
         }
