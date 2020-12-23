@@ -12,9 +12,4 @@ simulateLeague() method.
 
 PROJECT TITLE: VolleyBall League
 DATE: 20th November 2020
-AUTHORS: Salman Haidri, Yaksh J Haranwala, Hasan Zobaer Chowdhury
-
-POINTS DISTRIBUTION:
-Salman Haidri - 12
-Yaksh J Haranwala - 12
-Hasan Zobaer Chodhury - 6
+AUTHORS: Salman Haidri, Yaksh J Haranwala
